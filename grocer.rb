@@ -1,26 +1,41 @@
 def find_item_by_name_in_collection(name, collection)
-  # Implement me first!
-  #
-  # Consult README for inputs and outputs
+  collection.each do |ele|
+    if  ele[:item] == name
+      return ele
+    end
+  end
+  return nil
 end
 
 def consolidate_cart(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This returns a new Array that represents the cart. Don't merely
-  # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  new_arr = []
+  cart.each do |ele|
+    if new_arr.include?(ele)
+      ele[:count] += 1
+    else
+      ele[:count] = 1
+  end
+    new_arr << ele
+  end
+  new_arr
 end
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
-end
+ new_arr = []
+ 
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+ new_arr = []
+  cart.each do |ele|
+    ele.each do |key,val|
+      pp ele
+      if !new_arr.include?(key)
+        new_arr << {key => val}
+      end
+    end
+    
+  end
+  pp new_arr
 end
 
 def checkout(cart, coupons)
